@@ -1,0 +1,16 @@
+Find employees who belong to Delhi.
+Find employee who belongs to Mumbai having age greater than 70.
+Employee belongs to both Mumbai & Delhi.
+Display employee name and salary using CTE with alias name.
+Display employee salary using CTE and alias name.
+Use a CTE to sort employees.
+Find second highest salary using CTE.
+Find top 3 highest paid employees using CTE.
+Find duplicate salary using CTE.
+Use multiple CTEs to show average, highest, and lowest salary.
+Create a salary classification for employees:
+Salary > 4000 → High
+Salary between 2000 to 4000 → Medium
+Salary less than 2000 → Low
+Use CTE with ROW_NUMBER() function to rank employees based on salary.
+Find department-wise highest salary using CTE.
