@@ -11,6 +11,12 @@ cte Rules
 | Aggregate Functions (`SUM`, `AVG`, `COUNT`) |                                    |
 | `TOP`                                       |                                    |
 
+| Purpose         | SQL Command |
+| --------------- | ----------- |
+| Final filtering | `WHERE`     |
+| Extra sorting   | `ORDER BY`  |
+
+
 
 
 Find employees who belong to Delhi.
