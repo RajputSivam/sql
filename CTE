@@ -1,3 +1,18 @@
+cte Rules
+
+| CTE ke Andar (`WITH cte AS (...)`)          | CTE ke Bahar (`SELECT * FROM cte`) |
+| ------------------------------------------- | ---------------------------------- |
+| `SELECT`                                    | `SELECT`                           |
+| `FROM`                                      | `ORDER BY`                         |
+| `WHERE`                                     | Final filtering                    |
+| `JOIN`                                      | Final display                      |
+| `GROUP BY`                                  | Extra sorting                      |
+| `HAVING`                                    |                                    |
+| Aggregate Functions (`SUM`, `AVG`, `COUNT`) |                                    |
+| `TOP`                                       |                                    |
+
+
+
 Find employees who belong to Delhi.
 
 with cte_delhi as
