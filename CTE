@@ -1,10 +1,38 @@
 Find employees who belong to Delhi.
+
+with cte_delhi as
+( select * from employeemaster where city="Delhi")
+select * from cte_delhi;
+
 Find employee who belongs to Mumbai having age greater than 70.
+with cte_delhi as
+( select * from employeemaster where city="Mumbai" and age>70)
+select * from cte_delhi
+
 Employee belongs to both Mumbai & Delhi.
+with cte as
+( select * from employeemaster where city="Mumbai" or city="Delhi" )
+select * from cte; 
+
 Display employee name and salary using CTE with alias name.
+
+
+
 Display employee salary using CTE and alias name.
+with cte(e_name,e_salary) as
+( select EmpName,Salary from employeemaster   )
+select * from cte;
+
+
 Use a CTE to sort employees.
+with cte as
+(
+ select*from employeemaster
+ order by Salary )
+ select * from cte;
+
 Find second highest salary using CTE.
+
 Find top 3 highest paid employees using CTE.
 Find duplicate salary using CTE.
 Use multiple CTEs to show average, highest, and lowest salary.
