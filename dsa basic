@@ -1,0 +1,6 @@
+| Conversion       | Formula             | Example           | Result |
+| ---------------- | ------------------- | ----------------- | ------ |
+| digit char → int | `ch - '0'`          | `'8' - '0'`       | `8`    |
+| int → digit char | `(char)(num + '0')` | `(char)(5 + '0')` | `'5'`  |
+| alphabet → index | `ch - 'a'`          | `'d' - 'a'`       | `3`    |
+| index → alphabet | `(char)(i + 'a')`   | `(char)(2 + 'a')` | `'c'`  |
