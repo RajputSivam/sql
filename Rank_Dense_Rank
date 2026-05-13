@@ -1,5 +1,12 @@
 Find Second N highest or lowest salary using Dense Rank
+N-Lowest Salary
 select EmpName from
 ( select EmpName,
-dense_rank() over (order by  Salary )as ar from employeemaster )
+dense_rank() over (order by  Salary  asc )as ar from employeemaster )
+as T where ar=5;
+
+N-highest Salary
+select EmpName from
+( select EmpName,
+dense_rank() over (order by  Salary desc )as ar from employeemaster )
 as T where ar=5;
