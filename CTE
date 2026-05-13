@@ -55,6 +55,11 @@ FROM cte
 ORDER BY Salary;
 
 Find second highest salary using CTE.
+select EmpName from
+( select EmpName,
+dense_rank() over (order by  Salary desc )as ar from employeemaster )
+as T where ar=2;
+
 
 Find top 3 highest paid employees using CTE.
 Find duplicate salary using CTE.
