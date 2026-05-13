@@ -46,11 +46,13 @@ select * from cte;
 
 
 Use a CTE to sort employees.
-with cte as
+WITH cte AS
 (
- select*from employeemaster
- order by Salary )
- select * from cte;
+    SELECT * FROM employeemaster
+)
+SELECT * 
+FROM cte
+ORDER BY Salary;
 
 Find second highest salary using CTE.
 
