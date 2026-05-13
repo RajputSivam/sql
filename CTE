@@ -62,7 +62,28 @@ as T where ar=2;
 
 
 Find top 3 highest paid employees using CTE.
+WITH cte AS
+(
+    SELECT *,
+           DENSE_RANK() OVER (ORDER BY Salary DESC) AS rnk
+    FROM employeemaster
+)
+SELECT *
+FROM cte
+WHERE rnk <= 3;
+
 Find duplicate salary using CTE.
+WITH cte AS
+(
+    SELECT Salary,
+           COUNT(*) AS cnt
+    FROM employeemaster
+    GROUP BY Salary
+)
+SELECT Salary, cnt
+FROM cte
+WHERE cnt > 1;
+
 Use multiple CTEs to show average, highest, and lowest salary.
 Create a salary classification for employees:
 Salary > 4000 → High
