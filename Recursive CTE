@@ -1,0 +1,6 @@
+Recursive CTE
+
+A query that reference itself,allowing it to iterative through hierachical)
+it is based on graph base ,tree based process iterative untill 
+a complete result set is produced
+
