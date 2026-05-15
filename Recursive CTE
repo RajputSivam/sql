@@ -4,3 +4,41 @@ A query that reference itself,allowing it to iterative through hierachical)
 it is based on graph base ,tree based process iterative untill 
 a complete result set is produced
 
+create recursive cte as old cte, start employee as salary 1400
+Recursively fetch the next Employee and salary less than 2000
+create another cte running total  display , calculate running salary
+display final output from running total cte
+
+WITH RECURSIVE old_cte AS
+(
+    SELECT EmployeeID,
+           EmployeeName,
+           Salary
+    FROM Employees
+    WHERE Salary = 1400
+
+    UNION ALL
+
+    SELECT e.EmployeeID,
+           e.EmployeeName,
+           e.Salary
+    FROM Employees e
+    INNER JOIN old_cte o
+        ON e.EmployeeID = o.EmployeeID + 1
+    WHERE e.Salary < 2000
+),
+
+running_total AS
+(
+    SELECT EmployeeID,
+           EmployeeName,
+           Salary,
+           SUM(Salary) OVER
+           (
+               ORDER BY EmployeeID
+           ) AS RunningSalary
+    FROM old_cte
+)
+
+SELECT *
+FROM running_total;
