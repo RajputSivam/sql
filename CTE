@@ -85,9 +85,82 @@ FROM cte
 WHERE cnt > 1;
 
 Use multiple CTEs to show average, highest, and lowest salary.
+WITH
+  avg_sal AS (
+    SELECT AVG(salary) AS avg_salary FROM employees
+  ),
+  max_sal AS (
+    SELECT MAX(salary) AS max_salary FROM employees
+  ),
+  min_sal AS (
+    SELECT MIN(salary) AS min_salary FROM employees
+  )
+SELECT
+  a.avg_salary,
+  x.max_salary,
+  n.min_salary
+FROM avg_sal a, max_sal x, min_sal n;
+
+
 Create a salary classification for employees:
 Salary > 4000 → High
+WITH high_sal AS (
+  SELECT emp_id, name, department, salary
+  FROM employees
+  WHERE salary > 4000
+)
+SELECT * FROM high_sal
+ORDER BY salary DESC;
+
 Salary between 2000 to 4000 → Medium
+WITH medium_sal AS (
+  SELECT emp_id, name, department, salary
+  FROM employees
+  WHERE salary BETWEEN 2000 AND 4000
+)
+SELECT * FROM medium_sal
+ORDER BY salary DESC;
+
 Salary less than 2000 → Low
+WITH low_sal AS (
+  SELECT emp_id, name, department, salary
+  FROM employees
+  WHERE salary < 2000
+)
+SELECT * FROM low_sal
+ORDER BY salary DESC;
+
+
 Use CTE with ROW_NUMBER() function to rank employees based on salary.
+WITH ranked AS (
+  SELECT
+    emp_id,
+    name,
+    department,
+    salary,
+    ROW_NUMBER() OVER (
+      ORDER BY salary DESC
+    ) AS salary_rank
+  FROM employees
+)
+SELECT * FROM ranked;
+
 Find department-wise highest salary using CTE.
+WITH dept_max AS (
+  SELECT
+    department,
+    MAX(salary) AS highest_salary
+  FROM employees
+  GROUP BY department
+)
+SELECT
+  e.name,
+  e.department,
+  e.salary,
+  d.highest_salary        AS dept_highest,
+  CASE WHEN e.salary = d.highest_salary
+       THEN 'Yes' ELSE 'No'
+  END                     AS is_top_earner
+FROM employees e
+JOIN dept_max d ON e.department = d.department
+ORDER BY e.department, e.salary DESC;
